@@ -1,0 +1,19 @@
+<!--
+  INTERIM LOGO, redrawn to match the storefront signage (green cross, orange mortar and pestle,
+  orange PITTRIDGE, green PHARMACY). Replace this file with the official vector artwork from the
+  pharmacy's designer when available. Keep the same filename and the site will use it everywhere.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 64" role="img" aria-labelledby="t">
+  <title id="t">Pittridge Pharmacy</title>
+  <!-- Cross -->
+  <path d="M20 4h20v18h18v20H40v18H20V42H2V22h18z" fill="#6B9E32" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Pestle -->
+  <line x1="31" y1="30" x2="46" y2="13" stroke="#062640" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="47" cy="12" r="4.5" fill="#E66A00" stroke="#FFFFFF" stroke-width="1.5"/>
+  <!-- Mortar -->
+  <path d="M15 30H45C45 39 38.5 45 30 45S15 39 15 30Z" fill="#E66A00" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="24" y="45" width="12" height="3.5" rx="1" fill="#E66A00" stroke="#FFFFFF" stroke-width="1.5"/>
+  <!-- Wordmark -->
+  <text x="68" y="26" textLength="170" lengthAdjust="spacingAndGlyphs" font-family="Arial Black, Segoe UI, Arial, sans-serif" font-size="21" font-weight="900" fill="#E66A00">PITTRIDGE</text>
+  <text x="67" y="55" textLength="172" lengthAdjust="spacingAndGlyphs" font-family="Arial Black, Segoe UI, Arial, sans-serif" font-size="28" font-weight="900" fill="#6B9E32">PHARMACY</text>
+</svg>

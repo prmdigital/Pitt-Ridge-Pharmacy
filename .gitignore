@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local
+
+# Private upload storage used by the local mock adapter. Never commit or serve.
+.data/
+
+# Local editor/agent tooling
+.claude/

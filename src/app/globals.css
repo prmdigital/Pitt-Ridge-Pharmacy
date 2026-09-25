@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+/*
+ * Brand tokens. Base colours come from the Pittridge Pharmacy logo.
+ * The "-strong" variants are darker versions used wherever text sits on or in the
+ * colour, so contrast meets WCAG 2.2 AA (4.5:1 for normal text):
+ *   white on green-strong #4A7A1F  = 5.1:1
+ *   white on orange-strong #C25700 = 4.5:1
+ *   navy on white                  = 16:1
+ *   muted #4A5B6B on white         = 6.9:1
+ * The base brand green (#6B9E32) and orange (#E66A00) are used for icons, borders and accents only.
+ */
+@theme {
+  --color-navy: #062640;
+  --color-navy-700: #0d3a5c;
+  --color-navy-50: #eef3f7;
+  --color-green: #6b9e32;
+  --color-green-strong: #4a7a1f;
+  --color-green-50: #f3f7ee;
+  --color-green-100: #e4eed8;
+  --color-orange: #e66a00;
+  --color-orange-strong: #c25700;
+  --color-orange-hover: #a84b00;
+  --color-purple: #302777;
+  --color-purple-50: #f0eff8;
+  --color-muted: #4a5b6b;
+  --color-line: #d7e0e8;
+
+  --font-sans: var(--font-brand), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius-card: 1rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 8rem;
+  }
+  body {
+    @apply bg-white font-sans text-navy antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold tracking-tight text-navy;
+    text-wrap: balance;
+    line-height: 1.15;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  a {
+    @apply underline-offset-4;
+  }
+
+  /* A clear, consistent focus ring on every interactive element. */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--color-orange-strong);
+    outline-offset: 3px;
+    border-radius: 0.375rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold no-underline transition-[background-color,transform,box-shadow] duration-200 ease-out sm:whitespace-nowrap;
+  }
+  .btn-sm {
+    @apply min-h-11 px-4 py-2 text-[0.95rem];
+  }
+  /* Orange is reserved for the most important action on screen. */
+  .btn-primary {
+    @apply bg-orange-strong text-white hover:bg-orange-hover;
+  }
+  .btn-secondary {
+    @apply bg-green-strong text-white hover:bg-[#3d6619];
+  }
+  .btn-navy {
+    @apply bg-navy text-white hover:bg-navy-700;
+  }
+  .btn-outline {
+    @apply border-2 border-navy bg-white text-navy hover:bg-navy-50;
+  }
+  .btn-outline-light {
+    @apply border-2 border-white/80 text-white hover:bg-white/10;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold tracking-wide text-green-strong uppercase;
+  }
+
+  .card {
+    @apply rounded-card border border-line bg-white;
+  }
+
+  .prose-page {
+    @apply max-w-3xl space-y-4 text-[1.0625rem] text-navy;
+  }
+  .prose-page h2 {
+    @apply mt-10 mb-2 text-2xl;
+  }
+  .prose-page h3 {
+    @apply mt-6 mb-1 text-lg;
+  }
+  .prose-page ul {
+    @apply list-disc space-y-1 pl-6;
+  }
+  .prose-page a {
+    @apply font-semibold text-green-strong underline;
+  }
+
+  /* Form controls */
+  .field-label {
+    @apply mb-1.5 block font-semibold text-navy;
+  }
+  .field-hint {
+    @apply mb-2 block text-[0.95rem] text-muted;
+  }
+  .field-input {
+    @apply block min-h-12 w-full rounded-lg border-2 border-[#8a9aa9] bg-white px-3.5 py-2.5 text-base text-navy placeholder:text-[#6b7b8a];
+  }
+  .field-input:focus-visible {
+    outline: 3px solid var(--color-orange-strong);
+    outline-offset: 1px;
+    border-color: var(--color-navy);
+  }
+  .field-input[aria-invalid="true"] {
+    @apply border-[#b42318];
+  }
+  .field-error {
+    @apply mt-1.5 flex items-start gap-1.5 text-[0.95rem] font-semibold text-[#b42318];
+  }
+}
+
+/* ---------- Motion ----------
+ * Subtle and quick: 200-450 ms, 12 px rise, ease-out, no bounce or looping.
+ * Everything is inside prefers-reduced-motion: no-preference, so reduced-motion
+ * users get the final state with no movement.
+ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero and quick actions: plays once on load. Use --delay for staggering. */
+  .motion-fade-up {
+    animation: fade-up 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  /* Scroll reveal with CSS scroll-driven animations. Browsers without support just show content. */
+  @supports (animation-timeline: view()) {
+    .motion-reveal {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+
+  /* Small hover lift for buttons and interactive cards. */
+  @media (hover: hover) { .btn:hover { transform: translateY(-1px); } }
+  .btn:active { transform: translateY(0); }
+  .lift {
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
+  }
+  @media (hover: hover) {
+    .lift:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(6, 38, 64, 0.1);
+    }
+  }
+
+  /* Mobile menu: fade and slide. */
+  .menu-panel {
+    transition: opacity 200ms ease-out, transform 200ms ease-out, visibility 0s linear 200ms;
+  }
+  .menu-panel[data-open="true"] {
+    transition: opacity 200ms ease-out, transform 200ms ease-out, visibility 0s;
+  }
+
+  /* FAQ: animate <details> open and close where supported. */
+  :root { interpolate-size: allow-keywords; }
+  details.faq::details-content {
+    height: 0;
+    overflow: clip;
+    transition: height 250ms ease-out, content-visibility 250ms allow-discrete;
+  }
+  details.faq[open]::details-content { height: auto; }
+}
+
+.menu-panel {
+  opacity: 0;
+  transform: translateY(-8px);
+  visibility: hidden;
+}
+.menu-panel[data-open="true"] {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+/* ---------- Layered "alive" design system ----------
+ * Elevation scale (dimensional layering): cards float over photo bands.
+ */
+@theme {
+  --shadow-e1: 0 1px 3px rgba(6, 38, 64, 0.08);
+  --shadow-e2: 0 6px 14px rgba(6, 38, 64, 0.08);
+  --shadow-e3: 0 14px 30px rgba(6, 38, 64, 0.12);
+  --shadow-e4: 0 28px 60px rgba(6, 38, 64, 0.18);
+  --color-teal: #0e6b73;
+}
+
+/* Fixed floating header height, used to pad the first section of every page. */
+:root { --hdr: 96px; }
+@media (min-width: 1024px) { :root { --hdr: 164px; } }
+.below-header { padding-top: var(--hdr); }
+
+/* Header info row collapses once the page scrolls. */
+.hdr-info {
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 250ms ease-out, opacity 200ms ease-out, visibility 0s;
+}
+.hdr-info > div { overflow: hidden; }
+/* visibility: hidden also removes the collapsed links from the tab order. */
+[data-scrolled="true"] .hdr-info {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows 250ms ease-out, opacity 200ms ease-out, visibility 0s linear 250ms;
+}
+
+.eyebrow-pill {
+  @apply inline-flex items-center gap-2 rounded-full bg-green-50 px-3 py-1 text-xs font-bold tracking-[0.12em] text-green-strong uppercase;
+}
+.eyebrow-light {
+  @apply inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold tracking-[0.12em] text-green-100 uppercase ring-1 ring-white/20;
+}
+
+@keyframes hero-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes live-ping { 0% { transform: scale(1); opacity: 0.7; } 80%, 100% { transform: scale(2.4); opacity: 0; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-hero-zoom { animation: hero-zoom 1.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .marquee-track { animation: marquee 40s linear infinite; }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track,
+  .marquee[data-paused="true"] .marquee-track { animation-play-state: paused; }
+  .live-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: inherit;
+    animation: live-ping 2s ease-out infinite;
+  }
+  .icon-swap { transition: background-color 200ms ease-out, color 200ms ease-out, transform 200ms ease-out; }
+  @media (hover: hover) { .group:hover .icon-swap { transform: rotate(-6deg) scale(1.05); } }
+  .arrow-nudge { transition: transform 200ms ease-out; }
+  @media (hover: hover) { .group:hover .arrow-nudge { transform: translateX(4px); } }
+  .img-zoom { transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1); }
+  @media (hover: hover) { .group:hover .img-zoom { transform: scale(1.05); } }
+}
+
+/* Reduced motion: the service ticker becomes a static, wrapped list so every item stays readable. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { flex-wrap: wrap; justify-content: center; width: 100%; padding: 0.5rem 1rem; }
+  .marquee-track > ul { flex-wrap: wrap; justify-content: center; }
+  .marquee-track > ul[aria-hidden="true"],
+  .marquee > button { display: none; }
+}
