@@ -30,9 +30,12 @@ export function Header() {
   }, []);
 
   return (
-    <header data-scrolled={scrolled} className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
+    <header data-scrolled={scrolled} className="fixed inset-x-0 top-0 z-50 pt-3">
+      {/* Same container as page content; the card bleeds out by its own padding on desktop,
+          so the logo lines up exactly with the content edge at every width. */}
+      <div className="container-page">
       <div
-        className={`relative mx-auto max-w-[98rem] rounded-[1.75rem] bg-white/95 ring-1 ring-navy/5 backdrop-blur transition-shadow duration-300 ${
+        className={`relative -mx-1 rounded-[1.75rem] lg:-mx-6 bg-white/95 ring-1 ring-navy/5 backdrop-blur transition-shadow duration-300 ${
           scrolled ? "shadow-e4" : "shadow-e3"
         }`}
       >
@@ -97,6 +100,7 @@ export function Header() {
             <MobileMenu />
           </div>
         </div>
+      </div>
       </div>
     </header>
   );
