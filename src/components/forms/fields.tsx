@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { forwardRef, useEffect, useRef } from "react";
 import { AlertCircle, CheckCircle2, Info, Loader2 } from "lucide-react";
-import { formSettings, site } from "@/config/site";
+import { formSettings, isPreview, site } from "@/config/site";
 
 /* ---------- Shared bits ---------- */
 
@@ -389,6 +389,11 @@ export function SuccessPanel({ title, reference, children }: { title: string; re
         {title}
       </h2>
       <div className="mt-3 space-y-3 text-lg">{children}</div>
+      {isPreview && (
+        <p className="mt-4 rounded-xl bg-orange-strong/10 p-3 font-semibold text-[#8a3d00]">
+          Preview only: this request was not sent to the pharmacy. Please call {site.phone.display}.
+        </p>
+      )}
       {reference && (
         <p className="mt-4 text-muted">
           Reference number: <strong className="text-navy">{reference}</strong>

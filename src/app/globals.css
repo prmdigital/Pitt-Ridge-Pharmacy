@@ -232,6 +232,9 @@
 /* Fixed floating header height, used to pad the first section of every page. */
 :root { --hdr: 96px; }
 @media (min-width: 1024px) { :root { --hdr: 164px; } }
+/* Preview banner adds 40px above the header card. */
+:root[data-preview] { --hdr: 136px; }
+@media (min-width: 1024px) { :root[data-preview] { --hdr: 204px; } }
 .below-header { padding-top: var(--hdr); }
 
 /* Header info row collapses once the page scrolls. */

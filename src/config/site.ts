@@ -92,3 +92,12 @@ export const nav = [
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+/**
+ * Preview mode for public demo links (set NEXT_PUBLIC_PREVIEW_MODE=true).
+ * - Shows a banner saying forms are not monitored.
+ * - Forms run fully in the browser but send nothing: no patient data leaves the device.
+ * - API routes refuse submissions, and search engines are told not to index the site.
+ * Turn it off only once a real, approved backend is connected (see README).
+ */
+export const isPreview = process.env.NEXT_PUBLIC_PREVIEW_MODE === "true";

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/config/site";
+import { isPreview, site } from "@/config/site";
 import type { Faq } from "@/content/faqs";
 
 export const absoluteUrl = (path = "/") => (path === "/" ? site.url : `${site.url}${path}`);
@@ -22,7 +22,7 @@ export function buildMetadata({
     title: title.includes(site.name) ? { absolute: title } : title,
     description,
     alternates: { canonical: url },
-    robots: noindex ? { index: false, follow: true } : undefined,
+    robots: isPreview ? { index: false, follow: false } : noindex ? { index: false, follow: true } : undefined,
     openGraph: {
       type: "website",
       locale: site.locale,

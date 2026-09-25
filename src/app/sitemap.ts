@@ -1,3 +1,6 @@
+// Generated once at build time (also required for the GitHub Pages static export).
+export const dynamic = "force-static";
+
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/seo";
 

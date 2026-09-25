@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
-import { site } from "@/config/site";
+import { isPreview, site } from "@/config/site";
 import { pharmacyJsonLd } from "@/lib/seo";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-brand", display: "swap" });
@@ -19,7 +19,8 @@ export const metadata: Metadata = {
   description: `${site.name} is a community pharmacy in Pitt Meadows, BC. Prescriptions, refills, transfers, medication reviews, delivery and pharmacist support.`,
   applicationName: site.name,
   formatDetection: { telephone: false },
-  icons: { icon: "/icon.svg" },
+  // Preview deployments must never be indexed by search engines.
+  ...(isPreview ? { robots: { index: false, follow: false } } : {}),
 };
 
 export const viewport: Viewport = {
@@ -30,7 +31,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-CA" className={jakarta.variable}>
+    <html lang="en-CA" className={jakarta.variable} data-preview={isPreview || undefined}>
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"

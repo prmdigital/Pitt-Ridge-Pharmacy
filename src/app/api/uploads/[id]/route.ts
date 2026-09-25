@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { rejectIfPreview } from "@/lib/server/preview";
 import { formSettings } from "@/config/site";
 import { isSameOrigin, sniffFileType, verify } from "@/lib/server/security";
 import { getUpload, storeUpload } from "@/lib/server/storage";
@@ -8,6 +9,8 @@ import { getUpload, storeUpload } from "@/lib/server/storage";
  * There is intentionally no GET handler. Uploaded files are never served back.
  */
 export async function PUT(req: Request, ctx: RouteContext<"/api/uploads/[id]">) {
+  const preview = rejectIfPreview();
+  if (preview) return preview;
   const { id } = await ctx.params;
   const url = new URL(req.url);
   const exp = Number(url.searchParams.get("exp"));

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { rejectIfPreview } from "@/lib/server/preview";
 import { deliverToPharmacy } from "@/lib/server/deliver";
 import { clientKey, rateLimit } from "@/lib/server/rate-limit";
 import { isSameOrigin } from "@/lib/server/security";
@@ -10,6 +11,8 @@ const MIN_FILL_MS = 3000;
 
 /** Receives prescription, refill, transfer and contact form submissions. */
 export async function POST(req: Request, ctx: RouteContext<"/api/requests/[type]">) {
+  const preview = rejectIfPreview();
+  if (preview) return preview;
   const { type } = await ctx.params;
   if (!(type in schemas)) return NextResponse.json({ error: "Not found." }, { status: 404 });
   const kind = type as RequestType;

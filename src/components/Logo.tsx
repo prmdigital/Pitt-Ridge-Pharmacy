@@ -5,7 +5,7 @@ import { site } from "@/config/site";
  * Brand logo. The file at /brand/pittridge-pharmacy-logo.svg is a STAND-IN until the
  * official artwork is supplied. Replace the file itself; don't redraw the logo in code.
  */
-export const LOGO_SRC = "/brand/pittridge-pharmacy-logo.svg";
+export const LOGO_SRC = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/brand/pittridge-pharmacy-logo.svg`;
 
 export function Logo({ className = "h-11 w-auto", linked = true }: { className?: string; linked?: boolean }) {
   const img = (

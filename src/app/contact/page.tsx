@@ -1,10 +1,11 @@
 import { AlertTriangle, Mail, MapPin, Navigation, Phone, Printer, UserRound } from "lucide-react";
+import { Suspense } from "react";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { ContactMessage } from "@/components/forms/ContactMessage";
 import { HoursList } from "@/components/HoursList";
 import { Logo } from "@/components/Logo";
 import { PageHeader } from "@/components/PageHeader";
 import { directionsUrl, fullAddress, site } from "@/config/site";
-import { services } from "@/content/services";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -14,14 +15,7 @@ export const metadata = buildMetadata({
   path: "/contact",
 });
 
-const topics: Record<string, string> = Object.fromEntries(services.map((s) => [s.slug, s.name]));
-topics["medication-review"] = "Medication Reviews";
-topics["delivery"] = "Free Prescription Pickup and Home Delivery";
-
-export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
-  const raw = (await searchParams).topic;
-  const topicSlug = typeof raw === "string" && raw in topics ? raw : "";
-  const topicName = topicSlug ? topics[topicSlug] : "";
+export default function ContactPage() {
 
   return (
     <>
@@ -101,14 +95,10 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
           <h2 id="message-heading" className="text-3xl">
             Send us a message
           </h2>
-          {topicName && (
-            <p className="mt-2 text-lg text-muted">
-              You&apos;re asking about: <strong className="text-navy">{topicName}</strong>
-            </p>
-          )}
-          <div className="mt-6">
-            <ContactForm topic={topicSlug} />
-          </div>
+          {/* Fallback (no topic) renders on the server; the browser then applies ?topic= if present. */}
+          <Suspense fallback={<div className="mt-6"><ContactForm /></div>}>
+            <ContactMessage />
+          </Suspense>
         </section>
       </div>
     </>

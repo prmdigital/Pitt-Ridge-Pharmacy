@@ -26,7 +26,17 @@ const securityHeaders = [
   ...(isDev ? [] : [{ key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" }]),
 ];
 
-const nextConfig: NextConfig = {
+/**
+ * GitHub Pages build (GITHUB_PAGES=true): a static export of the site.
+ * - Pages can only host static files, so there are no API routes (the workflow removes
+ *   src/app/api before building) and no custom security headers.
+ * - Preview mode is forced on: forms run in the browser and send nothing.
+ * - The site lives under /<repo-name>, so everything is served from that base path.
+ */
+const isPages = process.env.GITHUB_PAGES === "true";
+const basePath = isPages ? (process.env.PAGES_BASE_PATH ?? "/Pitt-Ridge-Pharmacy") : "";
+
+const serverConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
     return [
@@ -37,4 +47,12 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const pagesConfig: NextConfig = {
+  output: "export",
+  basePath,
+  trailingSlash: true,
+  images: { unoptimized: true },
+  env: { NEXT_PUBLIC_PREVIEW_MODE: "true", NEXT_PUBLIC_BASE_PATH: basePath },
+};
+
+export default isPages ? pagesConfig : serverConfig;

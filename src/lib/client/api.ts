@@ -1,4 +1,8 @@
+import { isPreview } from "@/config/site";
 import type { FieldErrors, RequestType } from "@/lib/validation/schemas";
+
+const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+const previewRef = () => `PREVIEW-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
 
 /**
  * Browser-side service layer. Components call these functions and never talk
@@ -14,6 +18,11 @@ export type SubmitResult =
 const NETWORK_ERROR = `We couldn't reach the pharmacy's website. Check your connection and try again, or call us.`;
 
 export async function submitRequest(type: RequestType, payload: Record<string, unknown>): Promise<SubmitResult> {
+  // Preview site: nothing is sent anywhere. The form behaves normally for demonstrations.
+  if (isPreview) {
+    await wait(700);
+    return { ok: true, reference: previewRef() };
+  }
   try {
     const res = await fetch(`/api/requests/${type}`, {
       method: "POST",
@@ -43,6 +52,16 @@ export async function uploadFile(
   file: File,
   { onProgress, signal }: { onProgress: (pct: number) => void; signal?: AbortSignal },
 ): Promise<string> {
+  // Preview site: simulate progress locally; the file never leaves the device.
+  if (isPreview) {
+    for (let pct = 10; pct <= 100; pct += 15) {
+      if (signal?.aborted) throw new DOMException("Upload cancelled", "AbortError");
+      onProgress(Math.min(pct, 100));
+      await wait(120);
+    }
+    onProgress(100);
+    return "preview-upload";
+  }
   let slot: { uploadId: string; uploadUrl: string };
   try {
     const res = await fetch("/api/uploads", {
