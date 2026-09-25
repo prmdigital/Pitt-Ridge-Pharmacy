@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-CA" className={jakarta.variable} data-preview={isPreview || undefined}>
+    <html lang="en-CA" className={jakarta.variable}>
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowLeftRight, Mail, MapPin, Phone, Printer } from "lucide-react";
 import { Logo } from "@/components/Logo";
-import { directionsUrl, isPreview, site } from "@/config/site";
+import { directionsUrl, site } from "@/config/site";
 import { DesktopNav, MobileMenu } from "./Nav";
 
 const info = [
@@ -31,14 +31,6 @@ export function Header() {
 
   return (
     <header data-scrolled={scrolled} className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
-      {isPreview && (
-        <p className="mx-auto mb-2 flex min-h-8 max-w-7xl items-center justify-center rounded-full bg-orange-strong px-4 py-1 text-center text-xs font-semibold text-white shadow-e2 sm:text-sm">
-          Preview site: forms are not sent.&nbsp;
-          <a href={site.phone.href} className="text-white underline">
-            Call {site.phone.display}
-          </a>
-        </p>
-      )}
       <div
         className={`relative mx-auto max-w-7xl rounded-[1.75rem] bg-white/95 ring-1 ring-navy/5 backdrop-blur transition-shadow duration-300 ${
           scrolled ? "shadow-e4" : "shadow-e3"
