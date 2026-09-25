@@ -32,7 +32,7 @@ export function Header() {
   return (
     <header data-scrolled={scrolled} className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
       <div
-        className={`relative mx-auto max-w-7xl rounded-[1.75rem] bg-white/95 ring-1 ring-navy/5 backdrop-blur transition-shadow duration-300 ${
+        className={`relative mx-auto max-w-[98rem] rounded-[1.75rem] bg-white/95 ring-1 ring-navy/5 backdrop-blur transition-shadow duration-300 ${
           scrolled ? "shadow-e4" : "shadow-e3"
         }`}
       >
