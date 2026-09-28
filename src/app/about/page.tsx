@@ -17,27 +17,36 @@ export default function AboutPage() {
   const manager = site.staff[0];
   return (
     <>
-      <PageHeader title="About our pharmacy" crumbs={[{ name: "About", path: "/about" }]} />
+      <PageHeader
+        title="About our pharmacy"
+        intro="A community pharmacy in Pitt Meadows, open 7 days a week."
+        crumbs={[{ name: "About", path: "/about" }]}
+      />
 
-      <section className="container-page grid items-start gap-10 py-12 md:py-16 lg:grid-cols-2">
-        <div className="prose-page">
-          <p className="text-xl">
+      <section aria-labelledby="story-heading" className="container-page grid items-center gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <h2 id="story-heading" className="text-3xl font-extrabold md:text-[2.6rem] md:leading-tight">
+            Everyday care, close to home
+          </h2>
+          <p className="mt-4 text-lg text-muted">
             {site.name} is here to make everyday medication care easier for individuals, families, and caregivers in Pitt
             Meadows.
           </p>
-          <p>
+          <p className="mt-4 text-lg text-muted">
             Our team takes time to listen, explain, and help patients choose the next practical step. Whether you&apos;re
             filling a new prescription, managing several medications, or looking after a parent or child, you can talk
             with us.
           </p>
-          <Placeholder block label="The pharmacy's own story: when it opened, what matters to the team, languages spoken" />
+          <div className="mt-6">
+            <Placeholder block label="The pharmacy's own story: when it opened, what matters to the team, languages spoken" />
+          </div>
         </div>
         <ImagePlaceholder description="the Pittridge Pharmacy storefront or dispensary" className="aspect-[4/3] w-full" />
       </section>
 
       <section aria-labelledby="team-heading" className="bg-green-50 py-12 md:py-16">
         <div className="container-page">
-          <h2 id="team-heading" className="text-3xl">
+          <h2 id="team-heading" className="text-3xl font-extrabold md:text-[2.6rem] md:leading-tight">
             Meet the team
           </h2>
           <div className="mt-8 grid gap-6 md:grid-cols-[280px_1fr]">
@@ -46,9 +55,9 @@ export default function AboutPage() {
               <span className="sr-only">Photo of {manager.name} to come</span>
             </div>
             <div className="card p-6 md:p-8">
-              <h3 className="text-2xl">{manager.name}</h3>
+              <h3 className="text-xl font-bold">{manager.name}</h3>
               <p className="mt-1 font-semibold text-green-strong">{manager.role}</p>
-              <p className="mt-4 text-muted">
+              <p className="mt-4 text-lg text-muted">
                 {manager.name} is the {manager.role.toLowerCase()} at {site.name}. You can ask to speak
                 with the pharmacist when you call or visit.
               </p>
@@ -64,8 +73,8 @@ export default function AboutPage() {
       </section>
 
       <section className="container-page py-12 md:py-16">
-        <h2 className="text-3xl">Visit or get in touch</h2>
-        <p className="mt-3 max-w-2xl text-lg text-muted">
+        <h2 className="text-3xl font-extrabold md:text-[2.6rem] md:leading-tight">Visit or get in touch</h2>
+        <p className="mt-4 max-w-2xl text-lg text-muted">
           You&apos;ll find us at {site.address.street}, {site.address.city}. We serve {site.serviceArea}.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">

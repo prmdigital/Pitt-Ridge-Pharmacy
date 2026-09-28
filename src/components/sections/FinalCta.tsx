@@ -7,10 +7,10 @@ export function FinalCta() {
     <section aria-labelledby="final-cta-heading" className="bg-navy py-16 text-white md:py-20">
       <div className="container-page flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 id="final-cta-heading" className="text-3xl text-white md:text-4xl">
+          <h2 id="final-cta-heading" className="text-3xl font-extrabold text-white md:text-[2.6rem] md:leading-tight">
             Need help with a prescription?
           </h2>
-          <p className="mt-3 max-w-xl text-white/85">
+          <p className="mt-4 max-w-xl text-lg text-white/85">
             Call us, send a request online, or visit us at {site.address.street} in {site.address.city}.
           </p>
         </div>
