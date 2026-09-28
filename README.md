@@ -111,7 +111,8 @@ Homepage photos are licensed Freepik stock, resized and stripped of metadata:
 
 | File | Freepik title |
 | --- | --- |
-| `public/images/pharmacist-explaining-prescription-to-patient-pitt-meadows.jpg` | Chemist explaining prescription to woman in drugstore |
+| `public/videos/pharmacist-consultation-loop-1080.mp4` / `-540.mp4` | Pharmacist Explaining Medication to an Elderly Customer in a Pharmacy (Freepik premium video; mirrored, trimmed to a 9 s seamless loop, no audio) |
+| `public/images/pharmacist-consultation-poster.jpg` | First frame of the hero video (poster and reduced-motion fallback) |
 | `public/images/weekly-pill-organizer-medication-routine.jpg` | Pill box arrangement still life |
 | `public/images/pharmacist-checking-blister-pack-medication.jpg` | Side view pharmacist at work |
 | `public/images/pharmacy-shelves-interior.jpg` | Empty drugstore with bottles and packages (used under navy tints) |

@@ -11,9 +11,9 @@ import {
   Package,
   Phone,
   Printer,
-  Truck,
 } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { HeroVideo } from "@/components/HeroVideo";
 import { OpenStatus } from "@/components/OpenStatus";
 import { FaqList } from "@/components/sections/FaqList";
 import { QuickActions } from "@/components/sections/QuickActions";
@@ -22,7 +22,6 @@ import { directionsUrl, site } from "@/config/site";
 import { faqs } from "@/content/faqs";
 import { featuredServices, services } from "@/content/services";
 import { buildMetadata } from "@/lib/seo";
-import heroImage from "../../public/images/pharmacist-explaining-prescription-to-patient-pitt-meadows.jpg";
 import teamImage from "../../public/images/pharmacist-checking-blister-pack-medication.jpg";
 import interiorImage from "../../public/images/pharmacy-shelves-interior.jpg";
 import organizerImage from "../../public/images/weekly-pill-organizer-medication-routine.jpg";
@@ -44,22 +43,29 @@ const homeFaqIds = ["upload-photo", "original-prescription", "refill", "transfer
 export default function HomePage() {
   return (
     <>
-      {/* ───────── Hero ───────── */}
-      <section aria-labelledby="hero-heading" className="below-header relative isolate overflow-hidden bg-green-50 pb-36 lg:pb-48">
-        {/* Soft brand shapes */}
-        <div aria-hidden className="absolute -top-32 -left-32 -z-10 size-[28rem] rounded-full bg-green-100/70 blur-3xl" />
-        <div aria-hidden className="absolute bottom-0 left-1/3 -z-10 size-72 rounded-full bg-orange/10 blur-3xl" />
+      {/* ───────── Hero: full-width looping video ───────── */}
+      <section
+        aria-labelledby="hero-heading"
+        className="below-header relative isolate flex min-h-[680px] items-center overflow-hidden bg-navy pb-36 lg:min-h-[800px] lg:pb-48"
+      >
+        <HeroVideo />
+        {/* Readability: solid-ish on phones, strong on the left and clear on the right from lg up */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-navy/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-navy/95 lg:via-navy/70 lg:to-navy/5"
+        />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-t from-navy/70 to-transparent" />
 
-        <div className="container-page relative grid items-center gap-10 pt-8 lg:static lg:min-h-[34rem] lg:grid-cols-2 lg:pt-16">
-          <div className="relative z-10 max-w-xl">
+        <div className="container-page relative w-full pt-10 lg:pt-16">
+          <div className="max-w-2xl">
             <h1
               id="hero-heading"
-              className="motion-fade-up text-[2.6rem] leading-[1.05] font-extrabold tracking-tight sm:text-6xl lg:text-[4.25rem]"
+              className="motion-fade-up text-[2.6rem] leading-[1.05] font-extrabold tracking-tight text-white sm:text-6xl lg:text-[4.5rem]"
               style={delay(80)}
             >
-              Pharmacy care that fits <span className="text-green-strong">your routine.</span>
+              Pharmacy care that fits <span className="text-[#9ccc5a]">your routine.</span>
             </h1>
-            <p className="motion-fade-up mt-6 max-w-lg text-lg text-muted md:text-xl" style={delay(160)}>
+            <p className="motion-fade-up mt-6 max-w-xl text-lg text-white/90 md:text-xl" style={delay(160)}>
               Prescription requests, medication support, delivery, and pharmacist care from a local Pitt Meadows team.
             </p>
             <div className="motion-fade-up mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap" style={delay(240)}>
@@ -67,56 +73,27 @@ export default function HomePage() {
                 Start a Prescription Request
                 <ArrowRight aria-hidden className="size-5" />
               </Link>
-              <a href={site.phone.href} className="btn btn-outline px-7 text-lg">
+              <a href={site.phone.href} className="btn btn-outline-light px-7 text-lg backdrop-blur-sm">
                 <Phone aria-hidden className="size-5" />
                 Call the Pharmacy
               </a>
             </div>
-            <ul className="motion-fade-up mt-8 flex flex-wrap gap-x-6 gap-y-2 font-semibold text-navy" style={delay(320)}>
+            <ul className="motion-fade-up mt-8 flex flex-wrap gap-x-6 gap-y-2 font-semibold text-white" style={delay(320)}>
               {["Free delivery", "Free blister packs", "Open 7 days a week"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
-                  <CheckCircle2 aria-hidden className="size-5 text-green-strong" />
+                  <CheckCircle2 aria-hidden className="size-5 text-[#9ccc5a]" />
                   {t}
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Photo: a card on mobile, full-bleed on the right from lg up */}
-          <div className="motion-fade-up relative aspect-[4/3] overflow-hidden rounded-3xl shadow-e4 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[56%] lg:rounded-none lg:rounded-bl-[5rem] lg:shadow-none" style={delay(120)}>
-            <Image
-              src={heroImage}
-              alt="A pharmacist explaining a prescription to a patient"
-              priority
-              fill
-              placeholder="blur"
-              sizes="(min-width: 1024px) 56vw, 100vw"
-              className="motion-hero-zoom object-cover object-[35%_center]"
-            />
-            <div aria-hidden className="absolute inset-y-0 left-0 hidden w-40 bg-gradient-to-r from-green-50 to-transparent lg:block" />
-            <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-navy/35 via-transparent to-transparent" />
-          </div>
-
-          {/* Floating status card */}
-          <div
-            className="motion-fade-up absolute right-6 bottom-6 z-10 hidden rounded-2xl bg-white/95 p-4 pr-5 shadow-e4 backdrop-blur sm:block lg:right-[6%] lg:bottom-56"
-            style={delay(500)}
-          >
-            <div className="flex items-center gap-3">
-              <span className="inline-flex size-11 items-center justify-center rounded-full bg-green-50 text-green-strong">
-                <Clock aria-hidden className="size-5" />
-              </span>
-              <div className="text-sm">
-                <OpenStatus className="font-bold text-navy" />
-                <p className="mt-0.5 text-muted">Mon–Fri 9–5 · Sat 10–2 · Sun 10–12</p>
-              </div>
-            </div>
-          </div>
-          <div
-            className="motion-fade-up absolute top-44 right-[40%] z-10 hidden items-center gap-2 rounded-full bg-navy px-4 py-2.5 text-sm font-bold text-white shadow-e4 xl:flex"
-            style={delay(620)}
-          >
-            <Truck aria-hidden className="size-4 text-green-100" /> Free medication delivery
+            <p
+              className="motion-fade-up mt-6 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl bg-white/10 px-4 py-2.5 text-sm text-white ring-1 ring-white/20 backdrop-blur"
+              style={delay(400)}
+            >
+              <Clock aria-hidden className="size-4 text-[#9ccc5a]" />
+              <OpenStatus className="font-bold" />
+              <span className="text-white/75">Mon–Fri 9–5 · Sat 10–2 · Sun 10–12</span>
+            </p>
           </div>
         </div>
       </section>
