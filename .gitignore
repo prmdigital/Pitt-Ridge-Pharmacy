@@ -12,3 +12,6 @@ next-env.d.ts
 
 # Local editor/agent tooling
 .claude/
+
+# Local build packages
+builds/
