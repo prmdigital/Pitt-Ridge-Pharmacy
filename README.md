@@ -24,7 +24,7 @@ Search the code for `data-placeholder`, or the rendered pages for "To be confirm
 | Which prescriptions need the original at pickup | `original-prescription` FAQ |
 | Services that need an appointment, and how to book | `appointments` FAQ, `pending` notes in `src/content/services.ts` |
 | Details for each service (minor ailments assessed, vaccines offered, monitoring types, senior discount terms) | `pending` notes in `src/content/services.ts` |
-| Photos: storefront, team, Jatin Patel, pharmacist with patient | Replace `<ImagePlaceholder>` uses (home, about) with real images in `public/images/` using descriptive filenames |
+| Photos: team, Jatin Patel (storefront photo supplied and used on About) | Replace `<ImagePlaceholder>` uses (home, about) with real images in `public/images/` using descriptive filenames |
 | Pharmacy story and a short intro from Jatin | `src/app/about/page.tsx` |
 | Real patient reviews, with permission | `site.reviews` |
 | Map coordinates | `site.geo` (for schema) |
@@ -117,6 +117,7 @@ Homepage photos are licensed Freepik stock, resized and stripped of metadata:
 | `public/images/pharmacist-checking-blister-pack-medication.jpg` | Side view pharmacist at work |
 | `public/images/pharmacy-shelves-interior.jpg` | Empty drugstore with bottles and packages (used under navy tints) |
 | `public/images/pharmacist-checking-blood-pressure.jpg` | Male pharmacist checking woman's blood pressure (Services page header) |
+| `public/images/pittridge-pharmacy-storefront-pitt-meadows.jpg` | Supplied by the pharmacy (About page) |
 
 These show models, not Pittridge staff. The team photo shows hands only, so it can't be mistaken
 for Jatin Patel. Replace them with real photos of the pharmacy when available, keeping the same filenames.

@@ -1,10 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, UserRound } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
-import { ImagePlaceholder, Placeholder } from "@/components/Placeholder";
+import { Placeholder } from "@/components/Placeholder";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { site } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
+import storefrontImage from "../../../public/images/pittridge-pharmacy-storefront-pitt-meadows.jpg";
 
 export const metadata = buildMetadata({
   title: "About Pittridge Pharmacy | Your Pitt Meadows Pharmacy",
@@ -41,7 +43,16 @@ export default function AboutPage() {
             <Placeholder block label="The pharmacy's own story: when it opened, what matters to the team, languages spoken" />
           </div>
         </div>
-        <ImagePlaceholder description="the Pittridge Pharmacy storefront or dispensary" className="aspect-[4/3] w-full" />
+        <div className="relative">
+          <div aria-hidden className="absolute -right-4 -bottom-4 h-full w-full rounded-3xl bg-green-100" />
+          <Image
+            src={storefrontImage}
+            alt="The Pittridge Pharmacy storefront in Pitt Meadows, with the pharmacy sign, services and opening hours in the windows"
+            placeholder="blur"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="relative w-full rounded-3xl object-cover shadow-e3"
+          />
+        </div>
       </section>
 
       <section aria-labelledby="team-heading" className="bg-green-50 py-12 md:py-16">
