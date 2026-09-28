@@ -116,6 +116,7 @@ Homepage photos are licensed Freepik stock, resized and stripped of metadata:
 | `public/images/weekly-pill-organizer-medication-routine.jpg` | Pill box arrangement still life |
 | `public/images/pharmacist-checking-blister-pack-medication.jpg` | Side view pharmacist at work |
 | `public/images/pharmacy-shelves-interior.jpg` | Empty drugstore with bottles and packages (used under navy tints) |
+| `public/images/pharmacist-checking-blood-pressure.jpg` | Male pharmacist checking woman's blood pressure (Services page header) |
 
 These show models, not Pittridge staff. The team photo shows hands only, so it can't be mistaken
 for Jatin Patel. Replace them with real photos of the pharmacy when available, keeping the same filenames.

@@ -1,10 +1,10 @@
-import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { site } from "@/config/site";
 import { services } from "@/content/services";
 import { buildMetadata } from "@/lib/seo";
+import servicesImage from "../../../public/images/pharmacist-checking-blood-pressure.jpg";
 
 export const metadata = buildMetadata({
   title: "Pharmacy Services in Pitt Meadows | Delivery, Vaccines, Compounding",
@@ -28,22 +28,9 @@ export default function ServicesPage() {
           </p>
         }
         crumbs={[{ name: "Services", path: "/services" }]}
-      >
-        <nav aria-label="Jump to a service" className="mt-6">
-          <ul className="flex flex-wrap gap-2">
-            {services.map((s) => (
-              <li key={s.slug}>
-                <Link
-                  href={`#${s.slug}`}
-                  className="inline-flex min-h-11 items-center rounded-full bg-white/10 px-4 text-[0.95rem] font-semibold text-white no-underline ring-1 ring-white/25 hover:bg-white hover:text-navy"
-                >
-                  {s.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </PageHeader>
+        image={servicesImage}
+        imageAlt="A pharmacist checking a patient's blood pressure at the pharmacy counter"
+      />
 
       <section aria-labelledby="all-services" className="container-page py-12 md:py-16">
         <h2 id="all-services" className="sr-only">
