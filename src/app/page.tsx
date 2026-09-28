@@ -52,12 +52,9 @@ export default function HomePage() {
 
         <div className="container-page relative grid items-center gap-10 pt-8 lg:static lg:min-h-[34rem] lg:grid-cols-2 lg:pt-16">
           <div className="relative z-10 max-w-xl">
-            <p className="eyebrow-pill motion-fade-up bg-white shadow-e1">
-              <MapPin aria-hidden className="size-3.5" /> Pitt Meadows community pharmacy
-            </p>
             <h1
               id="hero-heading"
-              className="motion-fade-up mt-5 text-[2.6rem] leading-[1.05] font-extrabold tracking-tight sm:text-6xl lg:text-[4.25rem]"
+              className="motion-fade-up text-[2.6rem] leading-[1.05] font-extrabold tracking-tight sm:text-6xl lg:text-[4.25rem]"
               style={delay(80)}
             >
               Pharmacy care that fits <span className="text-green-strong">your routine.</span>
@@ -169,8 +166,7 @@ export default function HomePage() {
           </div>
 
           <div>
-            <p className="eyebrow-pill motion-reveal">About us</p>
-            <h2 id="about-heading" className="motion-reveal mt-3 text-3xl font-extrabold md:text-[2.6rem] md:leading-tight">
+            <h2 id="about-heading" className="motion-reveal text-3xl font-extrabold md:text-[2.6rem] md:leading-tight">
               Your neighbourhood pharmacy in Pitt Meadows
             </h2>
             <p className="motion-reveal mt-5 text-lg text-muted">
@@ -206,8 +202,7 @@ export default function HomePage() {
           <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-br from-navy via-navy/90 to-teal/80" />
           <div className="container-page flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="eyebrow-light motion-reveal">Our services</p>
-              <h2 id="services-heading" className="motion-reveal mt-3 max-w-xl text-3xl font-extrabold text-white md:text-[2.6rem] md:leading-tight">
+              <h2 id="services-heading" className="motion-reveal max-w-xl text-3xl font-extrabold text-white md:text-[2.6rem] md:leading-tight">
                 Support beyond the prescription
               </h2>
             </div>
@@ -246,8 +241,7 @@ export default function HomePage() {
       <section aria-labelledby="how-heading" className="py-20 md:py-28">
         <div className="container-page grid items-center gap-14 lg:grid-cols-2">
           <div>
-            <p className="eyebrow-pill motion-reveal">How it works</p>
-            <h2 id="how-heading" className="motion-reveal mt-3 text-3xl font-extrabold md:text-[2.6rem] md:leading-tight">
+            <h2 id="how-heading" className="motion-reveal text-3xl font-extrabold md:text-[2.6rem] md:leading-tight">
               From request to pickup in three steps
             </h2>
             <ol className="relative mt-10 space-y-8 before:absolute before:top-2 before:bottom-2 before:left-6 before:w-0.5 before:bg-green-100">
@@ -294,8 +288,7 @@ export default function HomePage() {
       <section aria-labelledby="faq-heading" className="bg-green-50 py-20 md:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p className="eyebrow-pill motion-reveal bg-white">Questions</p>
-            <h2 id="faq-heading" className="motion-reveal mt-3 text-3xl font-extrabold md:text-[2.6rem] md:leading-tight">
+            <h2 id="faq-heading" className="motion-reveal text-3xl font-extrabold md:text-[2.6rem] md:leading-tight">
               Questions patients often ask
             </h2>
             <div className="motion-reveal mt-8 rounded-3xl bg-navy p-7 text-white shadow-e3">
@@ -322,8 +315,7 @@ export default function HomePage() {
       <section aria-labelledby="visit-heading" className="py-16 md:py-20">
         <div className="container-page">
           <div className="text-center">
-            <p className="eyebrow-pill motion-reveal">We&apos;re close by</p>
-            <h2 id="visit-heading" className="motion-reveal mt-3 text-3xl font-extrabold md:text-4xl">
+            <h2 id="visit-heading" className="motion-reveal text-3xl font-extrabold md:text-4xl">
               Visit, call or send a message
             </h2>
           </div>
@@ -390,8 +382,7 @@ export default function HomePage() {
         <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-navy/95 via-navy/85 to-teal/75" />
         <div className="container-page grid items-center gap-12 lg:grid-cols-2">
           <div className="text-white lg:order-2">
-            <p className="eyebrow-light motion-reveal">Get in touch</p>
-            <h2 id="contact-heading" className="motion-reveal mt-3 text-3xl font-extrabold text-white md:text-[2.6rem] md:leading-tight">
+            <h2 id="contact-heading" className="motion-reveal text-3xl font-extrabold text-white md:text-[2.6rem] md:leading-tight">
               Need help with a prescription?
             </h2>
             <p className="motion-reveal mt-4 max-w-md text-lg text-white/85">

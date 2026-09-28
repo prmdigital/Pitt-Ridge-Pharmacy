@@ -9,8 +9,7 @@ export function Reviews() {
   return (
     <section aria-labelledby="reviews-heading" className="py-16 md:py-20">
       <div className="container-page">
-        <p className="eyebrow">Patient feedback</p>
-        <h2 id="reviews-heading" className="mt-2 text-3xl md:text-4xl">
+        <h2 id="reviews-heading" className="text-3xl md:text-4xl">
           What patients say
         </h2>
 

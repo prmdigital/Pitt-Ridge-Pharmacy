@@ -103,9 +103,6 @@
     @apply border-2 border-white/80 text-white hover:bg-white/10;
   }
 
-  .eyebrow {
-    @apply text-sm font-semibold tracking-wide text-green-strong uppercase;
-  }
 
   .card {
     @apply rounded-card border border-line bg-white;
@@ -248,12 +245,6 @@
   transition: grid-template-rows 250ms ease-out, opacity 200ms ease-out, visibility 0s linear 250ms;
 }
 
-.eyebrow-pill {
-  @apply inline-flex items-center gap-2 rounded-full bg-green-50 px-3 py-1 text-xs font-bold tracking-[0.12em] text-green-strong uppercase;
-}
-.eyebrow-light {
-  @apply inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold tracking-[0.12em] text-green-100 uppercase ring-1 ring-white/20;
-}
 
 @keyframes hero-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
