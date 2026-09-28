@@ -71,7 +71,6 @@ export function NewPrescriptionForm() {
             value={v.email}
             onChange={(x) => set("email", x)}
             error={e.email}
-            hint="Required if you'd like us to contact you by email."
           />
         </div>
       </FormSection>
@@ -82,7 +81,7 @@ export function NewPrescriptionForm() {
 
       <FormSection title="Pickup and contact">
         <RadioGroup name="fulfilment" legend="Pickup or delivery" options={fulfilmentOptions} value={v.fulfilment} onChange={(x) => set("fulfilment", x)} error={e.fulfilment} />
-        <RadioGroup name="contactMethod" legend="Preferred contact method" options={contactOptions} value={v.contactMethod} onChange={(x) => set("contactMethod", x)} error={e.contactMethod} />
+        <RadioGroup name="contactMethod" legend="Preferred contact method" options={contactOptions} hint="If you choose email, please add your email address above." value={v.contactMethod} onChange={(x) => set("contactMethod", x)} error={e.contactMethod} />
         <TextAreaField
           name="message"
           label="Additional message"

@@ -59,7 +59,7 @@ export function TransferForm() {
         <DobField value={v.dateOfBirth} onChange={(x) => set("dateOfBirth", x)} error={e.dateOfBirth} />
         <div className="grid gap-5 sm:grid-cols-2">
           <TextField name="phone" label="Phone number" type="tel" autoComplete="tel" inputMode="tel" required value={v.phone} onChange={(x) => set("phone", x)} error={e.phone} />
-          <TextField name="email" label="Email address" type="email" autoComplete="email" value={v.email} onChange={(x) => set("email", x)} error={e.email} hint="Required if you'd like us to contact you by email." />
+          <TextField name="email" label="Email address" type="email" autoComplete="email" value={v.email} onChange={(x) => set("email", x)} error={e.email} />
         </div>
       </FormSection>
 
@@ -75,7 +75,7 @@ export function TransferForm() {
       </FormSection>
 
       <FormSection title="Contact and permission">
-        <RadioGroup name="contactMethod" legend="Preferred contact method" options={contactOptions} value={v.contactMethod} onChange={(x) => set("contactMethod", x)} error={e.contactMethod} />
+        <RadioGroup name="contactMethod" legend="Preferred contact method" options={contactOptions} hint="If you choose email, please add your email address above." value={v.contactMethod} onChange={(x) => set("contactMethod", x)} error={e.contactMethod} />
         <CheckboxField name="consentContactPrevious" checked={v.consentContactPrevious} onChange={(x) => set("consentContactPrevious", x)} error={e.consentContactPrevious}>
           I give permission for Pittridge Pharmacy to contact my current pharmacy to transfer the prescriptions listed above.
         </CheckboxField>
