@@ -6,6 +6,7 @@ import { QuickActions } from "@/components/sections/QuickActions";
 import { site } from "@/config/site";
 import { faqs } from "@/content/faqs";
 import { buildMetadata } from "@/lib/seo";
+import prescriptionsImage from "../../../public/images/patient-photographing-prescription-for-upload.jpg";
 
 export const metadata = buildMetadata({
   title: "Prescriptions in Pitt Meadows | New, Refill and Transfer",
@@ -24,6 +25,8 @@ export default function PrescriptionsPage() {
         title="Prescriptions"
         intro="Choose what you need. Each request goes to our pharmacy team for review."
         crumbs={[{ name: "Prescriptions", path: "/prescriptions" }]}
+        image={prescriptionsImage}
+        imageAlt="A patient taking a photo of a paper prescription with a phone at the pharmacy counter"
       />
       <section aria-label="Prescription requests" className="container-page py-12">
         <QuickActions />

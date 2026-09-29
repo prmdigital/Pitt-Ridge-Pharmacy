@@ -118,6 +118,9 @@ Homepage photos are licensed Freepik stock, resized and stripped of metadata:
 | `public/images/pharmacy-shelves-interior.jpg` | Empty drugstore with bottles and packages (used under navy tints) |
 | `public/images/pharmacist-checking-blood-pressure.jpg` | Male pharmacist checking woman's blood pressure (Services page header) |
 | `public/images/pittridge-pharmacy-storefront-pitt-meadows.jpg` | Supplied by the pharmacy (About page) |
+| `public/images/pharmacist-counting-tablets-dispensary.jpg` | AI-generated with Freepik (About team card; no face shown, replace with a real photo of Jatin) |
+| `public/images/patient-photographing-prescription-for-upload.jpg` | AI-generated with Freepik (Prescriptions header) |
+| `public/images/pharmacy-front-counter-pitt-meadows.jpg` | AI-generated with Freepik (Contact header) |
 
 These show models, not Pittridge staff. The team photo shows hands only, so it can't be mistaken
 for Jatin Patel. Replace them with real photos of the pharmacy when available, keeping the same filenames.

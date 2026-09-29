@@ -7,6 +7,7 @@ import { Logo } from "@/components/Logo";
 import { PageHeader } from "@/components/PageHeader";
 import { directionsUrl, fullAddress, site } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
+import contactImage from "../../../public/images/pharmacy-front-counter-pitt-meadows.jpg";
 
 export const metadata = buildMetadata({
   title: "Contact Pittridge Pharmacy | Pitt Meadows, BC",
@@ -19,7 +20,10 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHeader title="Contact us" intro="Call, email, or visit. We're happy to help." crumbs={[{ name: "Contact", path: "/contact" }]} />
+      <PageHeader title="Contact us" intro="Call, email, or visit. We're happy to help." crumbs={[{ name: "Contact", path: "/contact" }]}
+        image={contactImage}
+        imageAlt="The front counter of a bright community pharmacy with a telephone and a plant"
+      />
 
       <div className="container-page grid gap-10 py-12 md:py-16 lg:grid-cols-[1fr_1.1fr]">
         <div className="space-y-6">

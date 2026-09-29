@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Pause, Play } from "lucide-react";
 import poster from "../../public/images/pharmacist-consultation-poster.jpg";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -11,14 +10,13 @@ const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
  * Full-width looping background video for the hero (licensed Freepik stock, muted, 9 s seamless loop).
  * - The poster image renders first (fast LCP, no-JS fallback); the video fades in once playing.
  * - Phones get the 540p file; larger screens get 1080p.
- * - Pauses when scrolled out of view or the tab is hidden, has a visible pause control
- *   (WCAG 2.2.2), and never plays when the visitor prefers reduced motion.
+ * - Pauses when scrolled out of view or the tab is hidden, and never plays when the visitor
+ *   prefers reduced motion (they see the still poster instead).
  */
 export function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [allowMotion, setAllowMotion] = useState(false);
   const [playing, setPlaying] = useState(false);
-  const [userPaused, setUserPaused] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -28,13 +26,13 @@ export function HeroVideo() {
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  // Play only while visible, the tab is active, and the visitor hasn't paused it.
+  // Play only while visible and the tab is active.
   useEffect(() => {
     const v = videoRef.current;
     if (!v || !allowMotion) return;
     let inView = true;
     const sync = () => {
-      if (inView && !document.hidden && !userPaused) v.play().catch(() => {});
+      if (inView && !document.hidden) v.play().catch(() => {});
       else v.pause();
     };
     const io = new IntersectionObserver(([entry]) => {
@@ -48,7 +46,7 @@ export function HeroVideo() {
       io.disconnect();
       document.removeEventListener("visibilitychange", sync);
     };
-  }, [allowMotion, userPaused]);
+  }, [allowMotion]);
 
   return (
     <>
@@ -79,17 +77,6 @@ export function HeroVideo() {
           <source src={`${base}/videos/pharmacist-consultation-loop-540.mp4`} type="video/mp4" media="(max-width: 767px)" />
           <source src={`${base}/videos/pharmacist-consultation-loop-1080.mp4`} type="video/mp4" />
         </video>
-      )}
-      {allowMotion && (
-        <button
-          type="button"
-          onClick={() => setUserPaused((p) => !p)}
-          aria-pressed={userPaused}
-          className="absolute top-[calc(var(--hdr)+0.75rem)] right-4 z-10 inline-flex size-11 items-center justify-center rounded-full bg-navy/60 text-white ring-1 ring-white/30 backdrop-blur hover:bg-navy/80 sm:right-6 lg:top-auto lg:bottom-52"
-        >
-          {userPaused ? <Play aria-hidden className="size-4" /> : <Pause aria-hidden className="size-4" />}
-          <span className="sr-only">Pause background video</span>
-        </button>
       )}
     </>
   );

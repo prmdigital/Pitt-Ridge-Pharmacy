@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, UserRound } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { Placeholder } from "@/components/Placeholder";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { site } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
 import storefrontImage from "../../../public/images/pittridge-pharmacy-storefront-pitt-meadows.jpg";
+import teamImage from "../../../public/images/pharmacist-counting-tablets-dispensary.jpg";
 
 export const metadata = buildMetadata({
   title: "About Pittridge Pharmacy | Your Pitt Meadows Pharmacy",
@@ -61,10 +62,14 @@ export default function AboutPage() {
             Meet the team
           </h2>
           <div className="mt-8 grid gap-6 md:grid-cols-[280px_1fr]">
-            <div className="flex aspect-square items-center justify-center rounded-card bg-white" data-placeholder="Photo of Jatin Patel">
-              <UserRound aria-hidden className="size-24 text-green" />
-              <span className="sr-only">Photo of {manager.name} to come</span>
-            </div>
+            {/* Illustrative image (no face). Replace with a real photo of Jatin when supplied. */}
+            <Image
+              src={teamImage}
+              alt="A pharmacist counting tablets at the dispensary counter"
+              placeholder="blur"
+              sizes="(min-width: 768px) 280px, 100vw"
+              className="aspect-square w-full rounded-card object-cover shadow-e2"
+            />
             <div className="card p-6 md:p-8">
               <h3 className="text-xl font-bold">{manager.name}</h3>
               <p className="mt-1 font-semibold text-green-strong">{manager.role}</p>
