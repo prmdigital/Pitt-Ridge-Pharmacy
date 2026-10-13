@@ -48,6 +48,15 @@ export const site = {
     { label: "Sunday", days: ["Sunday"], opens: "10:00", closes: "12:00" },
   ] as null | { label: string; days: string[]; opens: string; closes: string }[],
 
+  /**
+   * Pre-opening mode. While true, the site shows an "Opening soon" badge, the live
+   * open/closed status says "Opening soon", and hours are labelled as planned hours.
+   * Set to false on opening day.
+   */
+  openingSoon: true as boolean,
+  /** Optional opening date shown with the badge, e.g. "November 2026". Leave null if not confirmed. */
+  openingDate: null as string | null,
+
   /** Delivery boundaries. NOT SUPPLIED. Free pickup and home delivery are confirmed; the area is not. */
   deliveryArea: null as string | null,
 

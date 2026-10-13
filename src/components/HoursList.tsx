@@ -19,8 +19,15 @@ export function HoursList({ dark = false }: { dark?: boolean }) {
       </div>
     );
   }
+  const soonNote = site.openingSoon ? (
+    <p className={`mb-3 text-sm font-semibold ${dark ? "text-green-100" : "text-green-strong"}`}>
+      Opening soon. These are our planned hours.
+    </p>
+  ) : null;
   if (dark) {
     return (
+      <>
+      {soonNote}
       <dl className="space-y-3">
         {site.hours.map((row) => (
           <div key={row.label}>
@@ -31,9 +38,12 @@ export function HoursList({ dark = false }: { dark?: boolean }) {
           </div>
         ))}
       </dl>
+      </>
     );
   }
   return (
+    <>
+    {soonNote}
     <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5">
       {site.hours.map((row) => (
         <div key={row.label} className="contents">
@@ -44,5 +54,6 @@ export function HoursList({ dark = false }: { dark?: boolean }) {
         </div>
       ))}
     </dl>
+    </>
   );
 }

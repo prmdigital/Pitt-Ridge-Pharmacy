@@ -12,6 +12,8 @@ const fmt = (t: string) => {
 
 /** Works out open/closed from site.hours in Pitt Meadows time (America/Vancouver). */
 function computeStatus(now = new Date()): Status | null {
+  // Before opening day, never tell visitors the pharmacy is open or opens "today".
+  if (site.openingSoon) return { open: false, text: site.openingDate ? `Opening soon · ${site.openingDate}` : "Opening soon" };
   if (!site.hours) return null;
   const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/Vancouver",

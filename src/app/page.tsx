@@ -58,6 +58,12 @@ export default function HomePage() {
 
         <div className="container-page relative w-full pt-10 lg:pt-16">
           <div className="max-w-2xl">
+            {site.openingSoon && (
+              <p className="motion-fade-up mb-5 inline-flex items-center gap-2.5 rounded-full bg-orange-strong px-4 py-2 text-sm font-bold text-white shadow-e3 sm:text-base">
+                <span aria-hidden className="live-dot relative inline-block size-2.5 rounded-full bg-white" />
+                Opening soon in Pitt Meadows{site.openingDate ? ` · ${site.openingDate}` : ""}
+              </p>
+            )}
             <h1
               id="hero-heading"
               className="motion-fade-up text-[2.6rem] leading-[1.05] font-extrabold tracking-tight text-white sm:text-6xl lg:text-[4.5rem]"
@@ -92,7 +98,7 @@ export default function HomePage() {
             >
               <Clock aria-hidden className="size-4 text-[#9ccc5a]" />
               <OpenStatus className="font-bold" />
-              <span className="text-white/75">Mon–Fri 9–5 · Sat 10–2 · Sun 10–12</span>
+              <span className="text-white/75">{site.openingSoon ? "Planned hours: " : ""}Mon–Fri 9–5 · Sat 10–2 · Sun 10–12</span>
             </p>
           </div>
         </div>
@@ -315,7 +321,7 @@ export default function HomePage() {
               <span className="icon-swap mx-auto inline-flex size-16 items-center justify-center rounded-full bg-navy text-white ring-8 ring-green-50 group-hover:bg-green-strong">
                 <Clock aria-hidden className="size-6" />
               </span>
-              <h3 className="mt-5 text-lg font-bold">Opening hours</h3>
+              <h3 className="mt-5 text-lg font-bold">{site.openingSoon ? "Planned hours" : "Opening hours"}</h3>
               <p className="mt-1 text-muted">
                 <span className="whitespace-nowrap">Mon–Fri: 9 a.m. – 5 p.m.</span>
                 <br />
