@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import poster from "../../public/images/pharmacist-consultation-poster.jpg";
+import poster from "../../public/images/hero-loop-poster.jpg";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 /**
- * Full-width looping background video for the hero (licensed Freepik stock, muted, 9 s seamless loop).
+ * Full-width looping background video for the hero (muted, no audio track, ~16 s loop).
  * - The poster image renders first (fast LCP, no-JS fallback); the video fades in once playing.
  * - Phones get the 540p file; larger screens get 1080p.
  * - Pauses when scrolled out of view or the tab is hidden, and never plays when the visitor
@@ -74,8 +74,8 @@ export function HeroVideo() {
             playing ? "opacity-100" : "opacity-0"
           }`}
         >
-          <source src={`${base}/videos/pharmacist-consultation-loop-540.mp4`} type="video/mp4" media="(max-width: 767px)" />
-          <source src={`${base}/videos/pharmacist-consultation-loop-1080.mp4`} type="video/mp4" />
+          <source src={`${base}/videos/hero-loop-540.mp4`} type="video/mp4" media="(max-width: 767px)" />
+          <source src={`${base}/videos/hero-loop-1080.mp4`} type="video/mp4" />
         </video>
       )}
     </>
