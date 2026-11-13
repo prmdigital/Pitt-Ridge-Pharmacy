@@ -25,10 +25,18 @@ export function PageHeader({
   imageAlt?: string;
 }) {
   const trail = [{ name: "Home", path: "/" }, ...crumbs];
+  // On mobile the side photo is hidden, so the page's own image becomes the hero
+  // backdrop (shown clearly, not faint) with a dark scrim for legible text; pages
+  // without an image fall back to the interior shot.
+  const mobileBg = image ?? interiorImage;
   return (
     <section className="below-header relative isolate overflow-hidden bg-navy text-white">
-      <Image src={interiorImage} alt="" fill priority sizes="100vw" className="motion-hero-zoom -z-10 object-cover opacity-30" />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/90 to-teal/70" />
+      {/* Mobile: the page's own photo, shown clearly, with a dark scrim for text */}
+      <Image src={mobileBg} alt="" fill priority sizes="100vw" className="-z-10 object-cover object-center lg:hidden" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-navy via-navy/80 to-navy/55 lg:hidden" />
+      {/* Desktop: faint interior tint behind the text (the photo shows in the card) */}
+      <Image src={interiorImage} alt="" fill priority sizes="100vw" className="motion-hero-zoom -z-10 hidden object-cover opacity-30 lg:block" />
+      <div aria-hidden className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-navy via-navy/90 to-teal/70 lg:block" />
       <div aria-hidden className="absolute -right-24 -bottom-24 -z-10 size-80 rounded-full bg-green/20 blur-3xl" />
       <div
         className={`container-page pt-12 pb-14 md:pt-16 md:pb-20 ${
