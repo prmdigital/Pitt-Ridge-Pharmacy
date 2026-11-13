@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { HeroVideo } from "@/components/HeroVideo";
-import { OpenStatus } from "@/components/OpenStatus";
+import { OpenBadge } from "@/components/OpenBadge";
 import { FaqList } from "@/components/sections/FaqList";
 import { QuickActions } from "@/components/sections/QuickActions";
 import { ServiceTicker } from "@/components/sections/ServiceTicker";
@@ -97,8 +97,8 @@ export default function HomePage() {
               style={delay(400)}
             >
               <Clock aria-hidden className="size-4 text-[#9ccc5a]" />
-              <OpenStatus className="font-bold" />
-              <span className="text-white/75">{site.openingSoon ? "Planned hours: " : ""}Mon–Fri 9–5 · Sat 10–2 · Sun 10–12</span>
+              <span className="font-bold">Mon–Fri 9–5</span>
+              <span className="text-white/75">· Sat 10–2 · Sun 10–12</span>
             </p>
           </div>
         </div>
@@ -281,7 +281,7 @@ export default function HomePage() {
                 <Phone aria-hidden className="size-5" /> Call {site.phone.display}
               </a>
               <p className="mt-4 text-sm text-white/70">
-                <OpenStatus />
+                <OpenBadge />
               </p>
             </div>
           </div>

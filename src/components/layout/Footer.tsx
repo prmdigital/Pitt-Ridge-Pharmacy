@@ -2,7 +2,7 @@ import Link from "next/link";
 import { AlertTriangle, Mail, MapPin, Phone, Printer } from "lucide-react";
 import { HoursList } from "@/components/HoursList";
 import { Logo } from "@/components/Logo";
-import { OpenStatus } from "@/components/OpenStatus";
+import { OpenBadge } from "@/components/OpenBadge";
 import { directionsUrl, fullAddress, site } from "@/config/site";
 
 const links = [
@@ -28,7 +28,7 @@ export function Footer() {
           <p className="text-xl font-bold text-green-100">{site.tagline}</p>
           <p className="max-w-xs text-white/75">A community pharmacy serving {site.serviceArea}.</p>
           <p className="inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15">
-            <OpenStatus />
+            <OpenBadge />
           </p>
         </div>
 

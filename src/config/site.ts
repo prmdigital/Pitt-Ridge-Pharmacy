@@ -53,7 +53,7 @@ export const site = {
    * open/closed status says "Opening soon", and hours are labelled as planned hours.
    * Set to false on opening day.
    */
-  openingSoon: true as boolean,
+  openingSoon: false as boolean,
   /** Optional opening date shown with the badge, e.g. "November 2026". Leave null if not confirmed. */
   openingDate: null as string | null,
 
